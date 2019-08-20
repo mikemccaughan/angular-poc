@@ -1,0 +1,17 @@
+<mat-form-field [formGroup]="group">
+  <input
+    matInput
+    [matDatepicker]="myDatepicker"
+    placeholder="Pay On:"
+    [formControl]="whenControl"
+    [min]="minDate"
+  />
+  <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+  <mat-datepicker #myDatepicker></mat-datepicker>
+  <mat-error *ngIf="whenControl.hasError('required')">
+    Please enter a date.
+  </mat-error>
+  <mat-error *ngIf="whenControl.hasError('matDatepickerMin')">
+    Please enter a date after today.
+  </mat-error>
+</mat-form-field>

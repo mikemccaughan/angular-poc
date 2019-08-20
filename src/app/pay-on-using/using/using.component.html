@@ -1,0 +1,11 @@
+<mat-form-field [formGroup]="group">
+  <mat-label>Pay Using:</mat-label>
+  <mat-select [formControl]="usingControl" required>
+    <mat-option *ngFor="let method of methods" [value]="method">
+      {{ method.method }}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="usingControl.hasError('required')"
+    >Please choose an payment method</mat-error
+  >
+</mat-form-field>
