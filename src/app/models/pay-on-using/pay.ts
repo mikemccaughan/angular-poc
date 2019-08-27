@@ -1,3 +1,4 @@
 export class Pay {
-  amount?: Number;
+  amount?: number;
+  name?: string;
 }

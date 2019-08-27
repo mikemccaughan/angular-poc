@@ -1,4 +1,100 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+.focused.mat-form-field-appearance-outline {
+  .mat-form-field-flex {
+    max-height: 63px;
+  }
+  input {
+    font-weight: normal;
+  }
+  .mat-form-field-prefix {
+    top: 0;
+    margin-right: 0.5ch;
+    font-weight: normal;
+  }
+  .mat-form-field-infix {
+    padding: 0.5em 0 1.5em 0;
+  }
+  .mat-form-field-suffix {
+    top: 0.5em;
+  }
+  .mat-form-field-subscript-wrapper {
+    top: calc(100% - 4em);
+  }
+  .mat-form-field-label {
+    color: black;
+    font-weight: normal;
+  }
+  .mat-select + .mat-form-field-label-wrapper .mat-form-field-label {
+    margin-top: -0.5em;
+  }
+  .mat-select.mat-select-invalid .mat-select-arrow {
+    color: black;
+  }
+  .mat-select-arrow-wrapper {
+    transform: translateY(-10%);
+  }
+  .mat-select-arrow {
+    color: black;
+    font-size: 150%;
+    line-height: 1.125;
+    width: 1em;
+    background-repeat: no-repeat;
+    display: inline-block;
+    fill: black;
+    height: 24px;
+    border: none;
+    margin: auto;
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+  .mat-select-value {
+    font-weight: normal;
+  }
+}
+button[mat-icon-button] {
+  background: none;
+  border-style: none;
+  border-radius: 0;
+}
+.mat-autocomplete-panel.pay {
+  .mat-option-text {
+    display: flex;
+    flex-flow: column nowrap;
+    span {
+      line-height: 1.4;
+    }
+  }
+  .amount {
+    color: black;
+    flex: 0 0 auto;
+  }
+  .name {
+    color: currentColor;
+    font-size: 90%;
+  }
+}
+.material.pay-component {
+  .mat-form-field-infix {
+    display: inline-table;
+  }
+  &.mat-form-field-invalid .mat-select-arrow {
+    color: #f44336;
+  }
+}

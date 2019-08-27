@@ -1,17 +1,43 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+  ViewEncapsulation,
+  ElementRef
+} from '@angular/core';
 import { Using } from 'src/app/models/pay-on-using/using';
-import { FormGroup, FormControl, ControlContainer, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  ControlContainer,
+  Validators
+} from '@angular/forms';
 
 @Component({
   selector: 'app-using',
   templateUrl: './using.component.html',
-  styleUrls: ['./using.component.scss']
+  styleUrls: ['./using.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class UsingComponent implements OnInit {
   group: FormGroup;
 
   @Output()
   public selected: EventEmitter<Using>;
+
+  private thema: string;
+  @Input()
+  public get theme(): string {
+    return this.thema;
+  }
+  public set theme(value: string) {
+    if (this.thema !== value) {
+      this.thema = value;
+      this.themeChanged();
+    }
+  }
 
   @Input()
   public collapsed: boolean;
@@ -24,7 +50,16 @@ export class UsingComponent implements OnInit {
 
   public usingControl: FormControl;
 
-  constructor(private container: ControlContainer) {
+  public label: { [key: string]: string };
+
+  public get isHintShown(): boolean {
+    return this.theme === 'focused' && !this.usingControl.dirty;
+  }
+
+  constructor(
+    private container: ControlContainer,
+    private elementRef: ElementRef
+  ) {
     if (container) {
       this.group = container.control as FormGroup;
     }
@@ -35,11 +70,37 @@ export class UsingComponent implements OnInit {
         method: 'Credit Card - *4242'
       },
       {
-        method: 'Back Account - *0393'
+        method: 'Bank Account - *0393'
       }
     ];
-    this.usingControl = new FormControl(this.using.method, [Validators.required])
+    this.usingControl = new FormControl(this.using.method, [
+      Validators.required
+    ]);
+    this.label = {
+      material: 'Pay Using:',
+      focused: 'Using'
+    };
   }
 
-  ngOnInit() {}
+  themeChanged() {
+    if (this.theme === 'focused') {
+      const arrow = this.elementRef.nativeElement.querySelector(
+        '.mat-select-arrow'
+      );
+      if (!arrow.classList.contains('mat-icon')) {
+        arrow.classList.add('mat-icon');
+        arrow.textContent = 'arrow_downward';
+      }
+    } else {
+      const arrow = this.elementRef.nativeElement.querySelector(
+        '.mat-select-arrow'
+      );
+      arrow.classList.remove('mat-icon');
+      arrow.textContent = '';
+    }
+  }
+
+  ngOnInit() {
+    this.themeChanged();
+  }
 }

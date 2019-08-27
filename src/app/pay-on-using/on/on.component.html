@@ -1,17 +1,35 @@
-<mat-form-field [formGroup]="group">
+<mat-form-field
+  [formGroup]="group"
+  [appearance]="theme === 'focused' ? 'outline' : 'legacy'"
+  [ngClass]="['on-component', theme]"
+>
+  <span *ngIf="theme === 'focused'" matPrefix>On</span>
   <input
     matInput
     [matDatepicker]="myDatepicker"
-    placeholder="Pay On:"
+    [placeholder]="label[theme]"
     [formControl]="whenControl"
     [min]="minDate"
   />
-  <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+  <button
+    *ngIf="theme === 'focused'"
+    mat-icon-button
+    matSuffix
+    (click)="myDatepicker.open()"
+    aria-label="downward pointing icon indicating use for showing calendar"
+  >
+    <mat-icon>arrow_downward</mat-icon>
+  </button>
+  <mat-datepicker-toggle
+    *ngIf="theme === 'material'"
+    matSuffix
+  ></mat-datepicker-toggle>
   <mat-datepicker #myDatepicker></mat-datepicker>
+  <mat-hint *ngIf="isHintShown">Please select or enter a date</mat-hint>
   <mat-error *ngIf="whenControl.hasError('required')">
-    Please enter a date.
+    Please select or enter a date
   </mat-error>
   <mat-error *ngIf="whenControl.hasError('matDatepickerMin')">
-    Please enter a date after today.
+    Please enter a date after today
   </mat-error>
 </mat-form-field>

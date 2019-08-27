@@ -9,9 +9,17 @@ import { Using } from '../models/pay-on-using/using';
   styleUrls: ['./pay-on-using.component.scss']
 })
 export class PayOnUsingComponent implements OnInit {
+  public theme = 'material';
+
   constructor() {}
 
   ngOnInit() {}
+
+  themeChanged(theme: string) {
+    if (this.theme !== theme) {
+      this.theme = theme;
+    }
+  }
 
   paySelected(pay: Pay) {}
 

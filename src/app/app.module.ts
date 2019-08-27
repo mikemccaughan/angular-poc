@@ -7,7 +7,14 @@ import { PayComponent } from './pay-on-using/pay/pay.component';
 import { OnComponent } from './pay-on-using/on/on.component';
 import { UsingComponent } from './pay-on-using/using/using.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatInputModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule } from '@angular/material';
+import {
+  MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatSelectModule,
+  MatIconModule,
+  MatAutocompleteModule
+} from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -26,7 +33,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatNativeDateModule,
     MatDatepickerModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
