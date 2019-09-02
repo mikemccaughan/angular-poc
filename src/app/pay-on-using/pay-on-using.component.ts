@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Pay } from '../models/pay-on-using/pay';
 import { On } from '../models/pay-on-using/on';
 import { Using } from '../models/pay-on-using/using';
@@ -9,17 +9,12 @@ import { Using } from '../models/pay-on-using/using';
   styleUrls: ['./pay-on-using.component.scss']
 })
 export class PayOnUsingComponent implements OnInit {
+  @Input()
   public theme = 'material';
 
   constructor() {}
 
   ngOnInit() {}
-
-  themeChanged(theme: string) {
-    if (this.theme !== theme) {
-      this.theme = theme;
-    }
-  }
 
   paySelected(pay: Pay) {}
 

@@ -13,9 +13,13 @@ import {
   MatNativeDateModule,
   MatSelectModule,
   MatIconModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatMenuModule
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LogoComponent } from './logo/logo.component';
+import { PocMenuComponent } from './poc-menu/poc-menu.component';
+import { UserMenuComponent } from './user-menu/user-menu.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PayOnUsingComponent,
     PayComponent,
     OnComponent,
-    UsingComponent
+    UsingComponent,
+    LogoComponent,
+    PocMenuComponent,
+    UserMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatSelectModule,
     MatIconModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

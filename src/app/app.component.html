@@ -1,3 +1,19 @@
-<form name="payment">
-  <app-pay-on-using></app-pay-on-using>
-</form>
+<header>
+  <h4>Fiserv</h4>
+  <app-logo [context]="context"></app-logo>
+  <nav>
+    <app-user-menu *ngIf="context === 'bmx4'"></app-user-menu>
+    <app-poc-menu
+      [context]="context"
+      [theme]="theme"
+      (contextChanged)="contextChanged($event)"
+      (themeChanged)="themeChanged($event)"
+    ></app-poc-menu>
+  </nav>
+</header>
+<main>
+  <form name="payment">
+    <app-pay-on-using [theme]="theme"></app-pay-on-using>
+  </form>
+</main>
+<footer></footer>

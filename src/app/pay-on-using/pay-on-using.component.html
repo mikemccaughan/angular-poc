@@ -1,15 +1,5 @@
 <fieldset role="group" class="container">
   <div class="row">
-    <select
-      class="col-4"
-      [value]="theme"
-      (change)="themeChanged($event.target.value)"
-    >
-      <option selected value="material">Material</option>
-      <option value="focused">Focused</option>
-    </select>
-  </div>
-  <div class="row">
     <app-pay
       [theme]="theme"
       (selected)="paySelected($event)"

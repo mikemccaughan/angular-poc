@@ -8,6 +8,36 @@ body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
+header {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+  width: 100%;
+  h4,
+  h5 {
+    font-size: 1.5em;
+    margin-right: 1ch;
+    flex: 0 0 auto;
+  }
+  app-logo {
+    flex: 1 1 auto;
+  }
+  nav {
+    flex: 0 0 auto;
+    button {
+      background: none;
+      border: none;
+      border-radius: 0;
+    }
+  }
+}
+
+.app-menu .active {
+  color: white;
+  background-color: orange;
+  font-weight: bold;
+}
+
 .focused.mat-form-field-appearance-outline {
   .mat-form-field-flex {
     max-height: 63px;

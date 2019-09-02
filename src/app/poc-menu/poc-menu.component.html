@@ -1,0 +1,43 @@
+<mat-menu #rootMenu="matMenu" class="app-menu">
+  <button mat-menu-item [matMenuTriggerFor]="switcherMenu">Context</button>
+  <button mat-menu-item [matMenuTriggerFor]="themeMenu">Theme</button>
+</mat-menu>
+<mat-menu #switcherMenu="matMenu" class="app-menu">
+  <button
+    mat-menu-item
+    [ngClass]="{ active: contextIsBmx4 }"
+    [disabled]="contextIsBmx4"
+    (click)="changeContext('bmx4')"
+  >
+    BillMatrix 4.0
+  </button>
+  <button
+    mat-menu-item
+    [ngClass]="{ active: contextIsBmxN }"
+    [disabled]="contextIsBmxN"
+    (click)="changeContext('bmxn')"
+  >
+    BillMatrix Next
+  </button>
+</mat-menu>
+<mat-menu #themeMenu="matMenu" class="app-menu">
+  <button
+    mat-menu-item
+    [ngClass]="{ active: themeIsMaterial }"
+    [disabled]="themeIsMaterial"
+    (click)="changeTheme('material')"
+  >
+    Material
+  </button>
+  <button
+    mat-menu-item
+    [ngClass]="{ active: themeIsFocused }"
+    [disabled]="themeIsFocused"
+    (click)="changeTheme('focused')"
+  >
+    Focused
+  </button>
+</mat-menu>
+<button mat-button [matMenuTriggerFor]="rootMenu">
+  Menu
+</button>
