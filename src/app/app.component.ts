@@ -10,6 +10,12 @@ export class AppComponent {
   theme = 'material';
   context = 'bmx4';
 
+  get classes(): any {
+    return {
+      [this.context]: true
+    };
+  }
+
   contextChanged(context: string) {
     this.context = context;
   }

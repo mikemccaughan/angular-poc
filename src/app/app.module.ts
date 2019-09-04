@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatMenuModule } from '@angular/material';
+import { MatMenuModule, MatIconModule } from '@angular/material';
 import { LogoComponent } from './logo/logo.component';
 import { PocMenuComponent } from './poc-menu/poc-menu.component';
 import { UserMenuComponent } from './user-menu/user-menu.component';
@@ -23,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     MatMenuModule,
+    MatIconModule,
     ContextModule
   ],
   providers: [],

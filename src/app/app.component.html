@@ -1,4 +1,4 @@
-<header [ngClass]="{ [context]: true }">
+<header [ngClass]="classes">
   <app-logo [context]="context"></app-logo>
   <nav>
     <app-user-menu *ngIf="context === 'bmxn'"></app-user-menu>
@@ -11,8 +11,18 @@
     ></app-poc-menu>
   </nav>
 </header>
-<main [ngClass]="{ [context]: true }">
+<main [ngClass]="classes">
   <app-bmx4 *ngIf="context === 'bmx4'" [theme]="theme"></app-bmx4>
   <app-bmxn *ngIf="context === 'bmxn'" [theme]="theme"></app-bmxn>
 </main>
-<footer [ngClass]="{ [context]: true }"></footer>
+<footer [ngClass]="classes">
+  <ng-container [ngSwitch]="context">
+    <ng-container *ngSwitchCase="bmx4">
+      <p>The information you submit is secure.</p>
+      <p class="powered-by"><span>powered by</span><img src="assets/images/billmatrix_logo.png" /></p>
+    </ng-container>
+    <ng-container *ngSwitchCase="bmxn">
+      <p><a href="#">Privacy Policy</a></p>
+    </ng-container>
+  </ng-container>
+</footer>

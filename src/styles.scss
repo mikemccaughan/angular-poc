@@ -139,30 +139,43 @@ button[mat-icon-button] {
   max-width: 980px;
   border: 1px solid #dfdcdc;
 }
+
 header.bmx4 {
+  height: 10vh;
   max-height: 6em;
   overflow: hidden;
 
-  img {
-    max-height: calc(6em - 1.5em );
+  nav {
+    display: flex;
+
+    > button {
+      display: flex;
+    }
   }
 
-  nav > button {
-    display: flex;
+  app-logo {
+    max-height: 6em;
   }
 
   h5 {
-    max-height: 6em;
+    margin: 15px 0 15px 25px;
+    height: 64px;
+  }
+
+  img {
+    height: 64px;
   }
 }
 main.bmx4 {
-  padding-top: 25vh;
+  padding: 25vh 0;
+  height: 80vh;
 }
 footer.bmx4 {
   font-size: small;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+  height: 10vh;
 
   p {
     margin: 25px;
@@ -172,4 +185,18 @@ footer.bmx4 {
     display: block;
     text-align: right;
   }
+}
+
+.bmxn {
+  width: 1170px;
+}
+header.bmxn {
+  position: sticky;
+  height: 10vh;
+}
+main.bmxn {
+  height: 80vh;
+}
+footer.bmxn {
+  height: 10vh;
 }
