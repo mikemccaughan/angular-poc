@@ -1,7 +1,8 @@
-<header>
+<header [ngClass]="{ [context]: true }">
   <app-logo [context]="context"></app-logo>
   <nav>
-    <app-user-menu *ngIf="context === 'bmx4'"></app-user-menu>
+    <app-user-menu *ngIf="context === 'bmxn'"></app-user-menu>
+    <button mat-button *ngIf="context === 'bmx4'">Logout <mat-icon matSuffix>close</mat-icon></button>
     <app-poc-menu
       [context]="context"
       [theme]="theme"
@@ -10,8 +11,8 @@
     ></app-poc-menu>
   </nav>
 </header>
-<main>
+<main [ngClass]="{ [context]: true }">
   <app-bmx4 *ngIf="context === 'bmx4'" [theme]="theme"></app-bmx4>
   <app-bmxn *ngIf="context === 'bmxn'" [theme]="theme"></app-bmxn>
 </main>
-<footer></footer>
+<footer [ngClass]="{ [context]: true }"></footer>
