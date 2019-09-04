@@ -11,8 +11,7 @@
   </nav>
 </header>
 <main>
-  <form name="payment">
-    <app-pay-on-using [theme]="theme"></app-pay-on-using>
-  </form>
+  <app-bmx4 *ngIf="context === 'bmx4'" [theme]="theme"></app-bmx4>
+  <app-bmxn *ngIf="context === 'bmxn'" [theme]="theme"></app-bmxn>
 </main>
 <footer></footer>
