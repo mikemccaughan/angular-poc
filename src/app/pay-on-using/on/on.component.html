@@ -24,7 +24,7 @@
     *ngIf="theme === 'material'"
     matSuffix
   ></mat-datepicker-toggle>
-  <mat-datepicker #myDatepicker></mat-datepicker>
+  <mat-datepicker #myDatepicker [panelClass]="classes"></mat-datepicker>
   <mat-hint *ngIf="isHintShown">Please select or enter a date</mat-hint>
   <mat-error *ngIf="whenControl.hasError('required')">
     Please select or enter a date

@@ -22,6 +22,9 @@ export class OnComponent implements OnInit {
   public theme: string;
 
   @Input()
+  public context: string;
+
+  @Input()
   public collapsed: boolean;
 
   @Input()
@@ -35,6 +38,14 @@ export class OnComponent implements OnInit {
 
   public get isHintShown(): boolean {
     return this.theme === 'focused' && !this.whenControl.dirty;
+  }
+
+  public get classes(): any {
+    return {
+      'on-component': true,
+      [this.context]: true,
+      [this.theme]: true
+    };
   }
 
   constructor(private container: ControlContainer) {

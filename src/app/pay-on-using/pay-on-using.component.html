@@ -2,16 +2,19 @@
   <div class="row">
     <app-pay
       [theme]="theme"
+      [context]="context"
       (selected)="paySelected($event)"
       class="col-lg-4"
     ></app-pay>
     <app-on
       [theme]="theme"
+      [context]="context"
       (selected)="onSelected($event)"
       class="col-lg-4"
     ></app-on>
     <app-using
       [theme]="theme"
+      [context]="context"
       (selected)="usingSelected($event)"
       class="col-lg-4"
     ></app-using>

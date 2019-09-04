@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-poc';
-  theme = 'material';
-  context = 'bmx4';
+  theme = 'focused';
+  context = 'bmxn';
 
   get classes(): any {
     return {

@@ -10,7 +10,10 @@ import { Using } from '../models/pay-on-using/using';
 })
 export class PayOnUsingComponent implements OnInit {
   @Input()
-  public theme = 'material';
+  public theme: string;
+
+  @Input()
+  public context: string;
 
   constructor() {}
 

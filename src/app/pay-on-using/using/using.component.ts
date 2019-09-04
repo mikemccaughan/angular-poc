@@ -27,6 +27,9 @@ export class UsingComponent implements OnInit {
   @Output()
   public selected: EventEmitter<Using>;
 
+  @Input()
+  public context: string;
+
   private thema: string;
   @Input()
   public get theme(): string {
@@ -54,6 +57,14 @@ export class UsingComponent implements OnInit {
 
   public get isHintShown(): boolean {
     return this.theme === 'focused' && !this.usingControl.dirty;
+  }
+
+  public get classes(): any {
+    return {
+      'using-component': true,
+      [this.context]: true,
+      [this.theme]: true
+    };
   }
 
   constructor(

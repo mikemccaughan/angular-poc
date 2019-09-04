@@ -11,8 +11,7 @@ import {
   MatInputModule,
   MatSelectModule,
   MatIconModule,
-  MatAutocompleteModule,
-  MatMenuModule
+  MatAutocompleteModule
 } from '@angular/material';
 
 @NgModule({

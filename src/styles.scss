@@ -44,18 +44,14 @@ app-pay-on-using .mat-form-field {
 
 .focused.mat-form-field-appearance-outline {
   .mat-form-field-flex {
-    max-height: 63px;
-  }
-  input {
-    font-weight: normal;
+    height: 73px;
   }
   .mat-form-field-prefix {
     top: 0;
     margin-right: 0.5ch;
-    font-weight: normal;
   }
   .mat-form-field-infix {
-    padding: 0.5em 0 1.5em 0;
+    padding: 10px;
   }
   .mat-form-field-suffix {
     top: 0.5em;
@@ -65,7 +61,6 @@ app-pay-on-using .mat-form-field {
   }
   .mat-form-field-label {
     color: black;
-    font-weight: normal;
   }
   .mat-select + .mat-form-field-label-wrapper .mat-form-field-label {
     margin-top: -0.5em;
@@ -98,16 +93,13 @@ app-pay-on-using .mat-form-field {
     font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
   }
-  .mat-select-value {
-    font-weight: normal;
-  }
 }
 button[mat-icon-button] {
   background: none;
   border-style: none;
   border-radius: 0;
 }
-.mat-autocomplete-panel.pay {
+.mat-autocomplete-panel.pay-component {
   .mat-option-text {
     display: flex;
     flex-flow: column nowrap;
@@ -188,15 +180,47 @@ footer.bmx4 {
 }
 
 .bmxn {
+  margin: 0 auto;
   width: 1170px;
+  .mat-form-field.mat-form-field-appearance-outline {
+    font-family: 'Open Sans', sans-serif;
+    .mat-form-field-prefix,
+    .mat-form-field-infix {
+      font-weight: 700;
+      font-size: 22px;
+    }
+    .mat-form-field-infix {
+      margin-left: 0;
+      padding-left: 0;
+      padding-top: 0;
+    }
+    &.pay-component {
+      .mat-form-field-prefix {
+        margin-right: 0;
+      }
+    }
+    .mat-select {
+      font-family: 'Open Sans', sans-serif;
+    }
+  }
 }
 header.bmxn {
   position: sticky;
   height: 10vh;
+  h5 {
+    padding: 20px;
+  }
 }
 main.bmxn {
   height: 80vh;
+  padding: 25vh 0;
 }
 footer.bmxn {
   height: 10vh;
+}
+.mat-select-panel.bmxn {
+  font-family: 'Open Sans', sans-serif;
+  .mat-option {
+    font-family: 'Open Sans', sans-serif;
+  }
 }

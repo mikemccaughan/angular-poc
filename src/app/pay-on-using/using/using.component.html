@@ -5,7 +5,7 @@
 >
   <mat-label *ngIf="theme === 'material'">{{ label[theme] }}</mat-label>
   <span *ngIf="theme === 'focused'" matPrefix>{{ label[theme] }}</span>
-  <mat-select #using [formControl]="usingControl">
+  <mat-select #using [formControl]="usingControl" [panelClass]="classes">
     <mat-option *ngFor="let method of methods" [value]="method">
       {{ method.method }}
     </mat-option>

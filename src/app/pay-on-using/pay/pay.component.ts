@@ -29,6 +29,9 @@ export class PayComponent implements OnInit {
   @Input()
   public theme: string;
 
+  @Input()
+  public context: string;
+
   private isCollapsed: boolean;
   @Input()
   public get collapsed(): boolean {
@@ -67,6 +70,10 @@ export class PayComponent implements OnInit {
     return this.theme === 'focused' && this.pay != null;
   }
 
+  public get classes(): string {
+    return ['pay-component', this.context, this.theme].join(' ');
+  }
+
   public paySelected(event: MatAutocompleteSelectedEvent) {
     this.pay = this.amounts.find(amt => amt.amount === event.option.value);
   }
@@ -96,7 +103,7 @@ export class PayComponent implements OnInit {
         amount: 12.35
       },
       {
-        name: 'Enter Any Amount',
+        name: 'Enter Different Amount',
         amount: 0.0
       }
     ];

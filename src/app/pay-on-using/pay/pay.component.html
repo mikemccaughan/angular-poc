@@ -16,7 +16,7 @@
   />
   <mat-autocomplete
     #auto="matAutocomplete"
-    class="pay"
+    [class]="classes"
     (optionSelected)="paySelected($event)"
   >
     <mat-option *ngFor="let amount of amounts" [value]="amount.amount">

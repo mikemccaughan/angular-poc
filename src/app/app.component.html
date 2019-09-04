@@ -17,11 +17,11 @@
 </main>
 <footer [ngClass]="classes">
   <ng-container [ngSwitch]="context">
-    <ng-container *ngSwitchCase="bmx4">
+    <ng-container *ngSwitchCase="'bmx4'">
       <p>The information you submit is secure.</p>
       <p class="powered-by"><span>powered by</span><img src="assets/images/billmatrix_logo.png" /></p>
     </ng-container>
-    <ng-container *ngSwitchCase="bmxn">
+    <ng-container *ngSwitchCase="'bmxn'">
       <p><a href="#">Privacy Policy</a></p>
     </ng-container>
   </ng-container>
