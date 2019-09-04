@@ -38,6 +38,10 @@ header {
   font-weight: bold;
 }
 
+app-pay-on-using .mat-form-field {
+  width: 100%;
+}
+
 .focused.mat-form-field-appearance-outline {
   .mat-form-field-flex {
     max-height: 63px;
@@ -126,5 +130,46 @@ button[mat-icon-button] {
   }
   &.mat-form-field-invalid .mat-select-arrow {
     color: #f44336;
+  }
+}
+
+/* Context-specific styles */
+.bmx4 {
+  margin: 0 auto;
+  max-width: 980px;
+  border: 1px solid #dfdcdc;
+}
+header.bmx4 {
+  max-height: 6em;
+  overflow: hidden;
+
+  img {
+    max-height: calc(6em - 1.5em );
+  }
+
+  nav > button {
+    display: flex;
+  }
+
+  h5 {
+    max-height: 6em;
+  }
+}
+main.bmx4 {
+  padding-top: 25vh;
+}
+footer.bmx4 {
+  font-size: small;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  p {
+    margin: 25px;
+  }
+
+  .powered-by span {
+    display: block;
+    text-align: right;
   }
 }
