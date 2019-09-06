@@ -114,9 +114,7 @@ export class OnComponent implements OnInit {
   ngOnInit() {}
 
   calendarClosed() {
-    console.log('closed', this.whenControl.value);
     if (this.whenControl.value && this.whenControl.value.getTime) {
-      console.log('value changed');
       this.on = { when: this.whenControl.value } as On;
       const date = this.whenControl.value.toISOString();
       const key = this.dateKeys[date];

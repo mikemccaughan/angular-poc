@@ -52,7 +52,6 @@ export class UsingComponent implements OnInit {
     return this.selectedUsing;
   }
   public set using(value: Using) {
-    console.log('using set', value, this.selectedUsing);
     if (value !== this.selectedUsing) {
       this.selectedUsing = value;
       this.selected.emit(this.selectedUsing);
