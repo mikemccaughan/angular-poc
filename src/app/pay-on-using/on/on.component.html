@@ -29,9 +29,10 @@
     #myDatepicker
     [panelClass]="classes"
     [dateClass]="getKeyDateClass"
-    (opened)="calendarOpened()"
+    (closed)="calendarClosed()"
   ></mat-datepicker>
   <mat-hint *ngIf="isHintShown">Please select or enter a date</mat-hint>
+  <mat-hint *ngIf="isOnNameHintShown">{{ this.on.name }}</mat-hint>
   <mat-error *ngIf="whenControl.hasError('required')">
     Please select or enter a date
   </mat-error>

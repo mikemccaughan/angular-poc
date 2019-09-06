@@ -140,6 +140,7 @@ button[mat-icon-button] {
   margin-top: -1.5ch;
   background: white;
   box-shadow: 2px 2px 2px -1px #aaa;
+  z-index: 1;
 }
 
 .mat-calendar-body-cell.minimum-due-date:not(.mat-calendar-body-disabled) {
@@ -238,6 +239,12 @@ footer.bmx4 {
   width: 1170px;
   .mat-form-field.mat-form-field-appearance-outline {
     font-family: 'Open Sans', sans-serif;
+.mat-form-field-subscript-wrapper {
+    font-size: 104%;
+    top: auto;
+    bottom: 1.8em;
+    padding-left: 0.75em;
+}
     .mat-form-field-prefix,
     .mat-form-field-infix {
       font-weight: 700;
@@ -247,6 +254,9 @@ footer.bmx4 {
       margin-left: 0;
       padding-left: 0;
       padding-top: 0;
+    }
+    .mat-form-field-prefix {
+      top: -1px;
     }
     &.pay-component {
       .mat-form-field-prefix {

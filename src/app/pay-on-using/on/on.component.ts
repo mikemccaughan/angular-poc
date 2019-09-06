@@ -6,7 +6,7 @@ import {
   ControlContainer,
   Validators
 } from '@angular/forms';
-import { MatCalendarCellCssClasses } from '@angular/material';
+import { MatCalendarCellCssClasses, MatDatepickerInputEvent } from '@angular/material';
 
 @Component({
   selector: 'app-on',
@@ -43,6 +43,10 @@ export class OnComponent implements OnInit {
   @Input()
   public keyDates: { [key: string]: Date };
 
+  public key2Display: { [key: string]: string };
+
+  public dateKeys: { [key: string]: string };
+
   public whenControl: FormControl;
 
   public minDate = new Date(Date.now() + 1 * 24 * 60 * 60 * 1000); // tomorrow
@@ -51,10 +55,12 @@ export class OnComponent implements OnInit {
 
   public label: { [key: string]: string };
 
-  public key2Display: { [key: string]: string };
-
   public get isHintShown(): boolean {
     return this.theme === 'focused' && !this.whenControl.dirty;
+  }
+
+  public get isOnNameHintShown(): boolean {
+    return this.theme === 'focused' && this.on.name && this.on.name.length > 0;
   }
 
   public get classes(): any {
@@ -94,20 +100,33 @@ export class OnComponent implements OnInit {
         new Date(Date.now() + 36 * 24 * 60 * 60 * 1000)
       )
     };
+
     this.key2Display = Object.keys(this.keyDates).reduce((agg, cur) => {
       agg[cur.replace(/\s/g, '-').toLowerCase()] = cur;
+      return agg;
+    }, {});
+    this.dateKeys = Object.keys(this.keyDates).reduce((agg, cur) => {
+      agg[this.keyDates[cur].toISOString()] = cur;
       return agg;
     }, {});
   }
 
   ngOnInit() {}
 
-  calendarOpened() {
-    console.log('calendar opened');
+  calendarClosed() {
+    console.log('closed', this.whenControl.value);
+    if (this.whenControl.value && this.whenControl.value.getTime) {
+      console.log('value changed');
+      this.on = { when: this.whenControl.value } as On;
+      const date = this.whenControl.value.toISOString();
+      const key = this.dateKeys[date];
+      if (key && key.length > 0) {
+        this.on.name = key;
+      }
+    }
   }
 
   getKeyDateClass = (date: Date) => {
-    console.log('getting key date class...');
     const dateValue = this.makeDateOnly(date).valueOf();
     const keyValues = Object.values(this.keyDates).map(d =>
       this.makeDateOnly(d).valueOf()
