@@ -5,12 +5,22 @@
 >
   <mat-label *ngIf="theme === 'material'">{{ label[theme] }}</mat-label>
   <span *ngIf="theme === 'focused'" matPrefix>{{ label[theme] }}</span>
-  <mat-select #using [formControl]="usingControl" [panelClass]="classes">
+  <mat-select
+    [formControl]="usingControl"
+    [panelClass]="classes"
+    [(value)]="using"
+  >
+    <mat-select-trigger>
+      {{ using.methodName }}
+    </mat-select-trigger>
     <mat-option *ngFor="let method of methods" [value]="method">
       {{ method.method }}
     </mat-option>
   </mat-select>
   <mat-hint *ngIf="isHintShown">Please select a card account</mat-hint>
+  <mat-hint *ngIf="isValueHintShown"
+    >{{ using.itemName }} - {{ using.itemNumber }}</mat-hint
+  >
   <mat-error *ngIf="usingControl.hasError('required')"
     >Please choose a pay method</mat-error
   >

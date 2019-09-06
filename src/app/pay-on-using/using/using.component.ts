@@ -14,6 +14,7 @@ import {
   ControlContainer,
   Validators
 } from '@angular/forms';
+import { MatSelectChange } from '@angular/material';
 
 @Component({
   selector: 'app-using',
@@ -45,8 +46,18 @@ export class UsingComponent implements OnInit {
   @Input()
   public collapsed: boolean;
 
+  private selectedUsing: Using;
   @Input()
-  using: Using;
+  public get using(): Using {
+    return this.selectedUsing;
+  }
+  public set using(value: Using) {
+    console.log('using set', value, this.selectedUsing);
+    if (value !== this.selectedUsing) {
+      this.selectedUsing = value;
+      this.selected.emit(this.selectedUsing);
+    }
+  }
 
   @Input()
   methods: Using[];
@@ -57,6 +68,14 @@ export class UsingComponent implements OnInit {
 
   public get isHintShown(): boolean {
     return this.theme === 'focused' && !this.usingControl.dirty;
+  }
+
+  public get isValueHintShown(): boolean {
+    return (
+      this.theme === 'focused' &&
+      !!this.using.itemName &&
+      !!this.using.itemName.length
+    );
   }
 
   public get classes(): any {
@@ -71,26 +90,34 @@ export class UsingComponent implements OnInit {
     private container: ControlContainer,
     private elementRef: ElementRef
   ) {
-    if (container) {
-      this.group = container.control as FormGroup;
+    if (this.container) {
+      this.group = this.container.control as FormGroup;
     }
     this.selected = new EventEmitter<Using>();
     this.using = new Using();
     this.methods = [
       {
-        method: 'Credit Card - *4242'
+        method: 'Credit Card - *4242',
+        methodName: 'Credit Card',
+        itemName: 'Michael D M...',
+        itemNumber: '*4242'
       },
       {
-        method: 'Bank Account - *0393'
+        method: 'Bank Account - *0393',
+        methodName: 'Bank Account',
+        itemName: 'Michael D M...',
+        itemNumber: '*0393'
       }
     ];
-    this.usingControl = new FormControl(this.using.method, [
-      Validators.required
-    ]);
+    this.usingControl = new FormControl(this.using, [Validators.required]);
     this.label = {
       material: 'Pay Using:',
       focused: 'Using'
     };
+  }
+
+  selectedUsingChanged($event: MatSelectChange): void {
+    this.using = $event.value as Using;
   }
 
   themeChanged() {

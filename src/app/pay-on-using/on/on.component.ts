@@ -6,6 +6,7 @@ import {
   ControlContainer,
   Validators
 } from '@angular/forms';
+import { MatCalendarCellCssClasses } from '@angular/material';
 
 @Component({
   selector: 'app-on',
@@ -27,14 +28,30 @@ export class OnComponent implements OnInit {
   @Input()
   public collapsed: boolean;
 
+  private selectedOn: On;
   @Input()
-  on: On;
+  public get on(): On {
+    return this.selectedOn;
+  }
+  public set on(value: On) {
+    if (value !== this.selectedOn) {
+      this.selectedOn = value;
+      this.selected.emit(this.selectedOn);
+    }
+  }
+
+  @Input()
+  public keyDates: { [key: string]: Date };
 
   public whenControl: FormControl;
 
-  public minDate = new Date(Date.now() + 1000 * 60 * 60 * 24); // tomorrow
+  public minDate = new Date(Date.now() + 1 * 24 * 60 * 60 * 1000); // tomorrow
+
+  public maxDate = new Date();
 
   public label: { [key: string]: string };
+
+  public key2Display: { [key: string]: string };
 
   public get isHintShown(): boolean {
     return this.theme === 'focused' && !this.whenControl.dirty;
@@ -48,10 +65,20 @@ export class OnComponent implements OnInit {
     };
   }
 
+  makeDateOnly(date: Date): Date {
+    if (!date) {
+      return date;
+    }
+    const d = new Date(date.valueOf());
+    d.setHours(0, 0, 0, 0);
+    return d;
+  }
+
   constructor(private container: ControlContainer) {
     if (container) {
       this.group = container.control as FormGroup;
     }
+    this.maxDate.setFullYear(this.maxDate.getFullYear() + 5); // five years
     this.selected = new EventEmitter<On>();
     this.on = new On();
     this.whenControl = new FormControl(this.on.when, [Validators.required]);
@@ -59,7 +86,37 @@ export class OnComponent implements OnInit {
       material: 'Pay On:',
       focused: ''
     };
+    this.keyDates = {
+      'Minimum Due Date': this.makeDateOnly(
+        new Date(Date.now() + 16 * 24 * 60 * 60 * 1000)
+      ),
+      'Total Due Date': this.makeDateOnly(
+        new Date(Date.now() + 36 * 24 * 60 * 60 * 1000)
+      )
+    };
+    this.key2Display = Object.keys(this.keyDates).reduce((agg, cur) => {
+      agg[cur.replace(/\s/g, '-').toLowerCase()] = cur;
+      return agg;
+    }, {});
   }
 
   ngOnInit() {}
+
+  calendarOpened() {
+    console.log('calendar opened');
+  }
+
+  getKeyDateClass = (date: Date) => {
+    console.log('getting key date class...');
+    const dateValue = this.makeDateOnly(date).valueOf();
+    const keyValues = Object.values(this.keyDates).map(d =>
+      this.makeDateOnly(d).valueOf()
+    );
+    const indexOfKeyValue = keyValues.indexOf(dateValue);
+    if (keyValues.includes(dateValue)) {
+      const foundKey = Object.keys(this.keyDates)[indexOfKeyValue];
+      return foundKey.replace(/\s/g, '-').toLowerCase();
+    }
+    return {};
+  }
 }

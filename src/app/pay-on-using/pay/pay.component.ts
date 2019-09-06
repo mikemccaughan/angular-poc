@@ -83,7 +83,7 @@ export class PayComponent implements OnInit {
       this.isPaySelected &&
       this.pay.amount !== +(event.target as HTMLInputElement).value
     ) {
-      this.pay.name = 'Enter Any Amount';
+      this.pay.name = this.amounts[this.amounts.length - 1].name;
     }
   }
 

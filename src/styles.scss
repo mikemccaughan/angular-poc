@@ -125,6 +125,61 @@ button[mat-icon-button] {
   }
 }
 
+.mat-calendar-body-cell.minimum-due-date::after {
+  content: '';
+}
+.mat-calendar-body-cell.minimum-due-date:hover::after {
+  content: 'Minimum Due Date';
+  display: block;
+  position: absolute;
+  left: 100%;
+  width: 120px;
+  border: 1px solid #aaa;
+  height: 3ch;
+  padding-top: 1.5ch;
+  margin-top: -1.5ch;
+  background: white;
+  box-shadow: 2px 2px 2px -1px #aaa;
+}
+
+.mat-calendar-body-cell.minimum-due-date:not(.mat-calendar-body-disabled) {
+  > .mat-calendar-body-cell-content {
+    background-color: goldenrod;
+  }
+  &:hover > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
+    background-color: yellow;
+  }
+}
+
+.mat-calendar-body-cell.total-due-date::after {
+  content: '';
+}
+.mat-calendar-body-cell.total-due-date:hover::after {
+  content: 'Total Due Date';
+  display: block;
+  position: absolute;
+  left: 100%;
+  width: 120px;
+  border: 1px solid #aaa;
+  height: 3ch;
+  padding-top: 1.5ch;
+  margin-top: -1.5ch;
+  background: white;
+  box-shadow: 2px 2px 2px -1px #aaa;
+  z-index: 1;
+}
+
+.mat-calendar-body-cell.total-due-date:not(.mat-calendar-body-disabled) {
+  > .mat-calendar-body-cell-content {
+    background-color: firebrick;
+    color: white;
+  }
+  &:hover > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
+    background-color: red;
+    color: white;
+  }
+}
+
 /* Context-specific styles */
 .bmx4 {
   margin: 0 auto;
@@ -155,12 +210,11 @@ header.bmx4 {
   }
 
   img {
-    height: 64px;
+    height: 34px;
   }
 }
 main.bmx4 {
   padding: 25vh 0;
-  height: 80vh;
 }
 footer.bmx4 {
   font-size: small;
@@ -212,7 +266,6 @@ header.bmxn {
   }
 }
 main.bmxn {
-  height: 80vh;
   padding: 25vh 0;
 }
 footer.bmxn {
