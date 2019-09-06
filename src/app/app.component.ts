@@ -11,9 +11,7 @@ export class AppComponent {
   context = 'bmxn';
 
   get classes(): any {
-    return {
-      [this.context]: true
-    };
+    return ['container', this.context];
   }
 
   contextChanged(context: string) {
